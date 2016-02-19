@@ -6,10 +6,14 @@
  var app = express();
  var routes  = require('./routes/index');
 var errorHandler = require('./middleware/errorHandlers');
+var logger = require('./middleware/log');
 
 // middleware 1) our routes are just the final middleware function req,res next
+app.use(logger.log);
 
+//server static file
 
+app.use(express.static(__dirname + "/static"));
 
 
 
@@ -19,6 +23,7 @@ var errorHandler = require('./middleware/errorHandlers');
  app.get('/chat',routes.chat);
 
 app.use(errorHandler.notFound);
+
 
 app.listen('4000');
 console.log("app listing to port 4000");
