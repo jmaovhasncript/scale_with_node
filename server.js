@@ -5,11 +5,17 @@
  var express = require('express');
  var app = express();
  var routes  = require('./routes/index');
-var errorHandler = require('./middleware/errorHandlers');
-var logger = require('./middleware/log');
+ var errorHandler = require('./middleware/errorHandlers');
+ var logger = require('./middleware/log');
+ var partials = require('express-partials');
 
+app.set('view engine', 'ejs');
+// for layout
+app.set('view options', {defaultLayout: 'layout'});
 // middleware 1) our routes are just the final middleware function req,res next
 app.use(logger.log);
+// middle for layout
+app.use(partials());
 
 
 //server static file

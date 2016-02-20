@@ -13,16 +13,16 @@ module.exports.loginProcess = loginProcess;
 module.exports.chat = chat;
 
  function index(req,res){
-     res.send("index");
+     res.render('index',{layout :"layout",title:"mohan"});
  }
 function login(req,res){
-     res.send("login");
+    res.render('login',{layout :"layout",title:"mohan"});
  }
 function loginProcess(req,res){
      res.redirect('/');
  }
 function chat(req,res){
-     res.send("chat");
+    res.render('chat',{layout :"layout",title:"mohan"});
  }
 
 
